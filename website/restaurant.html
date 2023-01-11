@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>My Blog</title>
+    <!--Bootstrap core-->
+    <link rel="stylesheet" href="../src/framework/bootstrap/css/bootstrap.min.css">
+    <script src="../src/framework/bootstrap/jquery-3.5.1.slim.min.js"></script>
+    <script src="../src/framework/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--Vue core-->
+    <script src="../src/framework/vue/vue.global.prod.js"></script>
+    <!--Customed-->
+    <link rel="stylesheet" href="base.css">
+    <script type="text/javascript" src="base.js"></script>
+    <script type="text/javascript" src="restaurant.js"></script>
+    <!--if js is not supported-->
+    <noscript>
+      <!--meta http-equiv="refresh" content="0;url=./NoSupport.html"-->
+    </noscript>
+  </head>
+  
+  <body id="app">
+    <header></header>
+
+    <nav v-html="mNavbarHtml"></nav>
+
+    <main class="user-select-none">
+      <div class="container">
+        <div><h1 v-text="mTitle"></h1></div>
+
+        <div class="toolbar-2">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-info customedBtn" v-for="(item, index) in mTabBtnInfo" :id="item[0]" v-text="item[1]" @click="btnEvent($event)"></button>
+          </div>
+        </div>
+
+        <div class="toolbar-4">
+          <span class="custom-radio" v-for="item in mRadioIdInfo">
+            <input type="radio" :id="item[0]" class="custom-control-input" name="listOptionRadio" v-model="mListOption" :value="item[0]">
+            <label class="custom-control-label" :for="item[0]" v-text="item[1]"></label>
+          </span>
+        </div>
+
+        <div class="content" v-html="mContentHtml">
+        </div>
+      </div>
+    </main>
+
+    <footer v-html="mFooterHtml"></footer>
+
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        setActiveNavbarItem('restaurant');
+      });
+
+      Vue.createApp({
+        data() {
+          return {
+            mNavbarHtml: 'Nav Bar',
+            mFooterHtml: 'Copyright', 
+            mContentHtml: 'Welcome to the restaurant webpage!', 
+            mTitle: '口袋名單', 
+            mCity: gCityInfo, 
+            mRadioIdInfo: [
+              ['tastyListOptionRadioInput', '推薦'],
+              ['unknownListOptionRadioInput', '探索']
+            ], 
+            mListOption: null,
+            curListOption: null,
+            curListType: null,
+            mTabBtnInfo: [
+              ['brunch', '早午餐'], 
+              ['dinner', '晚餐'], 
+              ['dessert', '甜點']
+            ]
+          }
+        },
+        watch: {
+          mListOption: function(nVal, oVal) {
+            switch(nVal) {
+              case this.mRadioIdInfo[0][0]:
+              this.curListOption = gListOption[0];
+                this.mContentHtml = getStoreHtml(this.curListType, this.curListOption);
+                break;
+              case this.mRadioIdInfo[1][0]:
+                this.curListOption = gListOption[1];
+                this.mContentHtml = getStoreHtml(this.curListType, this.curListOption);
+                break;
+              default:
+                break;
+            }
+          }
+        },
+        mounted() {
+          this.mNavbarHtml = getNavbarHtml();
+          this.mFooterHtml = getCopyrightHtml();
+          this.mContentHtml = getStoreHtml(gListType[0], gListOption[0]);
+          this.mListOption = this.mRadioIdInfo[0][0];
+          this.curListOption = gListOption[0];
+          this.curListType = gListType[0];
+          setActiveBtnGroupBtn(this.mTabBtnInfo[0][0]);
+        },
+        methods: {
+          btnEvent(event) {
+            var id = event.target.id;
+            switch(id) {
+              case this.mTabBtnInfo[0][0]:
+                this.curListType = this.mTabBtnInfo[0][0];
+                break;
+              case this.mTabBtnInfo[1][0]:
+                this.curListType = this.mTabBtnInfo[1][0];
+                break;
+              case this.mTabBtnInfo[2][0]:
+                this.curListType = this.mTabBtnInfo[2][0];
+                break;
+              default:
+                break;
+            }
+            setActiveBtnGroupBtn(id);
+            this.mContentHtml = getStoreHtml(this.curListType , this.curListOption);
+          }
+        }
+      }).mount('#app');
+    </script>
+  </body>
+</html>

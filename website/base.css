@@ -1,0 +1,257 @@
+
+/*
+@import "navbar.css";
+*/
+
+:root {
+  --orange-color: #ebc999;
+  --white-color: #f0eff4;
+  --blue-color: #8ca9d3;
+  --red-color: #f26659;
+}
+
+* {
+  font-family: monospace;
+}
+
+body {
+  margin: 0px;
+}
+
+header {
+  background-color: var(--red-color); 
+}
+
+nav {
+  background-color: var(--orange-color);
+  color: var(--blue-color);
+  min-height: 40px;
+  height: 6vh;
+  width: 100%;
+}
+
+main {
+  background-color: var(--white-color);
+  color: var(--blue-color);
+  padding-bottom: 2em;
+  font-size: 18px;
+  min-height: 90vh;
+  height: auto;
+}
+
+footer {
+  background-color: var(--orange-color);
+  color: var(--white-color);
+  text-align: center;
+  font-size: 20px;
+  height: 4vh;
+  width: 100%;
+  min-height: 40px;
+  cursor: default;
+}
+
+article {
+  text-indent: 2em;
+}
+
+article.padding-2 {
+  padding-left: 2em;
+}
+
+main div.container {
+  padding-top: 30px;
+  cursor: default;
+  height: 100%;
+}
+
+main div.container h1 {
+  text-indent: 0em;
+}
+
+main div.container h2 {
+  text-indent: 1em;
+}
+
+main div.container h3 {
+  text-indent: 2em;
+}
+
+div[class*="toolbar-"] {
+  padding-bottom: 1em;
+}
+
+div.toolbar-2 {
+  padding-left: 2em;
+}
+
+div.toolbar-3 {
+  padding-left: 3em;
+}
+
+div.toolbar-4 {
+  padding-left: 4em;
+}
+
+div.toolbar-4 span, div.toolbar-3 span {
+  padding-left: 1.5em;
+}
+/** main content page for index.html  **/
+
+div.content {
+  text-indent: 1em;
+  padding-left: 1em;
+  padding-top: 20px;
+  width: 100%;
+}
+
+button.customedBtn {
+  color: var(--blue-color);
+  border-color: var(--blue-color);
+}
+
+button.customedBtn:hover  {
+  background-color: var(--white-color);
+  color: var(--orange-color);
+}
+
+button.customedBtn.activeTabBtn {
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+
+div.customed-list-group-pannel {
+  padding-bottom: 1em;
+  padding-right: 3em;
+  padding-left: 3em;
+}
+
+li.list-group-item.customed-list-group-item {
+  background-color: var(--white-color);
+  border-color: var(--orange-color);
+  border-style: dotted;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+figure.showpiece {
+  padding-bottom: 24px;
+  padding-left: 1em;
+}
+
+img.showcaseImg {
+  border: 0.4em double var(--orange-color);
+  height: 200px;
+  width: 200px;
+}
+
+figcaption.showcaseTxt {
+  text-align: center;
+  width: 200px;
+  height: auto;
+}
+/**main content page for the restaurant.html***/
+
+div.store-pannel {
+  margin-right: 3em;
+  margin-left: 3em;
+}
+
+div.store-pannel div.row > div.store-header {
+  border-color: var(--orange-color);
+  border-style: dotted;
+  border-width: 1px;
+  padding: 0.5em;
+
+  text-align: center;
+  font-weight: bolder;
+}
+
+div.store-pannel div.row > div.store-header a {
+  color: var(--blue-color);
+}
+
+div.store-pannel div.row div a img {
+  margin-top: -5px;
+  width: 18px;
+}
+
+div.store-pannel div.row div.store-item {
+  border-color: var(--orange-color);
+  border-style: dotted;
+  border-width: 1px;
+  padding: 2em;
+}
+
+div.store-pannel div.row div.store-item div {
+  padding-left: 2em;
+}
+
+div.store-pannel div.row div.store-item div.store-header {
+  padding-left: 0px;
+}
+/**bootstrap UI  'navbar'**********************/
+ul.navbar-nav li.nav-item a img.active {
+  border: 2px var(--blue-color) dashed;
+}
+
+button.navbar-toggler {
+  margin-left: 10px;
+  font-size: 15px;
+  padding: 0px;
+  height: 28px;
+  width: 28px;
+}
+
+#navbarContent ul {
+  background-color: var(--orange-color);
+  padding-left: 10px;
+  width: 50px;
+}
+/**bootstrap UI 'tooltip'**********************/
+.tooltip-inner {
+  background-color: var(--red-color);
+  color: var(--white-color);
+  font-size: 1.5em;
+  opacity: 1;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+  border-bottom-color: var(--red-color);
+}
+/**cutomed radio*******************************/
+span.custom-radio {
+  padding: 10px;
+}
+
+span.custom-radio .custom-control-input + .custom-control-label::before {
+  background-color: var(--white-color);
+  transform: scale(1.2);
+}
+
+span.custom-radio .custom-control-input:checked + .custom-control-label::before {
+  border-color: var(--orange-color);
+  background-color: var(--orange-color);
+}
+/**cutomed select******************************/
+select.customed-select {
+  appearance: none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  background: url('../src/img/double_arrow_down_white.svg') no-repeat right center transparent;
+  background-color: var(--orange-color);
+  border-color: var(--orange-color);
+  color: var(--white-color);
+  padding-right: 1.3em;
+  padding-left: 0.3em;
+  box-shadow: 0px 0px;
+}
+/**********************************************/
+.full-height {
+  height: 100%;
+  width: auto;
+}
+
+.full-width {
+  height: auto;
+  width: 100%;
+}
