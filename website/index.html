@@ -2,85 +2,34 @@
 <html>
   <head>
     <meta charset="utf8">
-    <title>My Blog</title>
+    <title>Tung\'s blog</title>
     <!--Bootstrap core-->
     <link rel="stylesheet" href="../src/framework/bootstrap/css/bootstrap.min.css">
-    <script src="../src/framework/bootstrap/jquery-3.5.1.slim.min.js"></script>
-    <script src="../src/framework/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!--Vue core-->
-    <script src="../src/framework/vue/vue.global.prod.js"></script>
     <!--Customed-->
     <link rel="stylesheet" href="base.css">
-    <script type="text/javascript" src="base.js"></script>
-    <!--if js is not supported-->
-    <noscript>
-      <!--meta http-equiv="refresh" content="0;url=./NoSupport.html"-->
-    </noscript>
+    <script>
+      function go() {
+        location.href = './profile.html';
+      }
+    </script>
   </head>
   
-  <body id="app">
+  <body onLoad="go();">
     <header></header>
 
-    <nav v-html="mNavbarHtml"></nav>
+    <nav class="no-support">
+      <a href="./index.html">再試一次</a>
+    </nav>
 
     <main class="user-select-none">
       <div class="container">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-outline-info customedBtn" v-for="item in mTabBtnInfo" :id="item[0]" v-text="item[1]" @click="btnEvent($event)"></button>
-        </div>
-
-        <div class="content" v-html="mContentHtml">
+        <div class="content">
+	  您的瀏覽器不支援Javascript.
         </div>
       </div>
     </main>
 
-    <footer v-html="mFooterHtml"></footer>
+    <footer>Copyright © 2022 Tung. All rights reserved.</footer>
 
-    <script>
-      $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        setActiveNavbarItem('profile');
-      });
-
-      Vue.createApp({
-        data() {
-          return {
-            mNavbarHtml: 'Nav Bar',
-            mFooterHtml: 'Copyright', 
-            mContentHtml: 'Welcome to the New Blog!', 
-            mTabBtnInfo: [
-              ['aboutTabBtn', '簡介'], 
-              ['expTabBtn', '經歷'],
-              ['portfolioTabBtn', '作品展示']
-            ]
-          }
-        },
-        mounted() {
-          this.mNavbarHtml = getNavbarHtml();
-          this.mFooterHtml = getCopyrightHtml();
-          this.mContentHtml = getAboutHtml();
-          setActiveBtnGroupBtn(this.mTabBtnInfo[0][0]);
-        },
-        methods: {
-          btnEvent(event) {
-            var id = event.target.id;
-            switch(id) {
-              case this.mTabBtnInfo[0][0]:
-                this.mContentHtml = getAboutHtml();
-                break;
-              case this.mTabBtnInfo[1][0]:
-                this.mContentHtml = getExpHtml();
-                break;
-              case this.mTabBtnInfo[2][0]:
-                this.mContentHtml = getPortfolioHtml();
-                break;
-              default:
-                break;
-            }
-            setActiveBtnGroupBtn(id);
-          }
-        }
-      }).mount('#app');
-    </script>
   </body>
 </html>

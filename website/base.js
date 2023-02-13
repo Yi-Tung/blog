@@ -1,8 +1,42 @@
-var MY_COPYRIGHT = 'Copyright © 2022 Tung. All rights reserved.';
+const DEFAULT_COPYRIGHT = 'Copyright © 2022 Tung. All rights reserved.';
+const DEFAULT_AUTHOR = 'Tung';
+const DEFAULT_TITLE = 'Tung\'s blog';
 
 function getCopyrightHtml() {
-  return MY_COPYRIGHT;
+  return DEFAULT_COPYRIGHT;
 }
+
+function common() {
+  setMeta();
+  setWebsiteTitle(DEFAULT_TITLE);
+}
+
+function setMeta() {
+  setAuthor(DEFAULT_AUTHOR);
+  setCopyright(DEFAULT_COPYRIGHT);
+}
+
+function setAuthor(cus_author) {
+  var link = document.createElement('meta');
+  link.name = 'author';
+  link.content = cus_author;
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+function setCopyright(cus_copyright) {
+  var link = document.createElement('meta');
+  link.name = 'copyright';
+  link.content = cus_copyright;
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+function setWebsiteTitle(cus_title) {
+  var link = document.createElement('title');
+  link.innerHTML = cus_title;
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+/**for the function about clipboard*******************************************************/
 
 function cpToScrapbook(text) {
   var buf = document.createElement('input');
@@ -83,7 +117,12 @@ function setActiveBtnGroupBtn(id) {
 
 const gAboutMe = [
   '關於我', 
-  '......'
+  '我的爸爸跟媽媽，自我年幼之時，便開了間早餐店，我跟哥哥在閒暇之餘會一起去店裡幫忙，雖然我們都是幫忙一些相對簡單的事務，不過卻見識各種待人處事的方式，也同時培養出我察言觀色的習慣，而在平常的生活中，他們也經常利用身邊的大小事情對我進行機會教育，也因此培養出我對各事物的聯想力。我的哥哥，目前是一位職業軍人，雖然在同個家庭出生也共同成長，我們的選擇卻截然不同，不過也因此讓我學會尊重每個人的選擇及想法，小時候的我們感情十分要好，即便有時會產生摩擦，但我仍然喜歡跟在他身邊，因為喜歡，所以不輕易放棄。我的家庭，總是會支持我去做我認為對的事情，所以當遇到困難時，我便會想盡辦法來解決，不希望辜負支持著我的人，即便遇到挫敗，我仍會再次振作。'
+];
+
+const gAboutMe_title = [
+  '(家庭背景)',
+  '(求學經歷)'
 ];
 
 const gAboutMenu = [
@@ -134,11 +173,16 @@ const gPortfolioMenu = [
 
 function getAboutHtml() {
   var str = `<section>
-               <h2>` + gAboutMe[0] + `</h2>
-               <article class="padding-2">`
+               <h2>` + gAboutMe[0] + `</h2>`
+	  +   `<span class="padding-4">`
+	  +     gAboutMe_title[0]
+	  +   `</span>`
+          +   `<article class="padding-4">`
+	  +      `<p>`
           +        gAboutMe[1]
-          + `  </article>
-             </section>`;
+	  +      `</p>`
+          + `  </article>`
+          + `</section>`;
 
    for(var i=0;i<gAboutMenu.length;i++) {
      var buf = gAboutMenu[i];

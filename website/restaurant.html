@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf8">
-    <title>My Blog</title>
-    <!--Bootstrap core-->
+    <!--if javascript is not supported, the webpage will be exchange to index.html-->
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=./index.html"-->
+    </noscript>
+    <!--including the Bootstrap core-->
     <link rel="stylesheet" href="../src/framework/bootstrap/css/bootstrap.min.css">
     <script src="../src/framework/bootstrap/jquery-3.5.1.slim.min.js"></script>
     <script src="../src/framework/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!--Vue core-->
+    <!--including the Vue core-->
     <script src="../src/framework/vue/vue.global.prod.js"></script>
-    <!--Customed-->
+    <!--including the customed files-->
     <link rel="stylesheet" href="base.css">
-    <script type="text/javascript" src="base.js"></script>
-    <script type="text/javascript" src="restaurant.js"></script>
-    <!--if js is not supported-->
-    <noscript>
-      <!--meta http-equiv="refresh" content="0;url=./NoSupport.html"-->
-    </noscript>
+    <script src="base.js"></script>
+    <script src="restaurant.js"></script>
+    <!--Other settings-->
   </head>
   
   <body id="app">
@@ -50,6 +50,7 @@
 
     <script>
       $(document).ready(function(){
+        common();
         $('[data-toggle="tooltip"]').tooltip();
         setActiveNavbarItem('restaurant');
       });
