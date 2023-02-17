@@ -134,6 +134,11 @@ button.customedBtn:hover  {
   color: var(--orange-color);
 }
 
+button.customedBtn:focus, button.customed:active  {
+  box-shadow: none;
+  outline: none;
+}
+
 button.customedBtn.activeTabBtn {
   background-color: var(--blue-color);
   color: var(--white-color);

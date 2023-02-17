@@ -1,6 +1,8 @@
 const DEFAULT_COPYRIGHT = 'Copyright © 2022 Tung. All rights reserved.';
 const DEFAULT_AUTHOR = 'Tung';
 const DEFAULT_TITLE = 'Tung\'s blog';
+const DEFAULT_ICON_FILENAME = 'logo.png';
+const DEFAULT_IMG_PATH = '../src/img/';
 
 function getCopyrightHtml() {
   return DEFAULT_COPYRIGHT;
@@ -8,6 +10,7 @@ function getCopyrightHtml() {
 
 function common() {
   setMeta();
+  setWebsiteFavicon(DEFAULT_IMG_PATH, DEFAULT_ICON_FILENAME);
   setWebsiteTitle(DEFAULT_TITLE);
 }
 
@@ -27,6 +30,14 @@ function setCopyright(cus_copyright) {
   var link = document.createElement('meta');
   link.name = 'copyright';
   link.content = cus_copyright;
+  document.getElementsByTagName('head')[0].appendChild(link);
+}
+
+function setWebsiteFavicon(cus_path, cus_icon_filename) {
+  var link = document.createElement('link');
+  link.type = 'image/x-icon';
+  link.rel = 'shortcut icon';
+  link.href = cus_path + cus_icon_filename;
   document.getElementsByTagName('head')[0].appendChild(link);
 }
 
