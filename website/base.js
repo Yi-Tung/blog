@@ -174,12 +174,20 @@ const gExpMenu = [
 
 const gPortfolioPath = '../src/portfolio/';
 const gPortfolioMenu = [
-  [gPortfolioPath+'monkeyGame/animation.jpg', '阿緱手遊之稅務謎城'],
-  [gPortfolioPath+'doubleTenGame/opening.jpg', '雙十連假親子體驗營隊之網頁問答遊戲'],
-  [gPortfolioPath+'taxConceptGame/group.jpg', '稅務觀念宣導遊戲'],
-  [gPortfolioPath+'openEyes/camera.jpg', '睜大你的眼'],
-  [gPortfolioPath+'sportManager/circuit.jpg', '運動管理員'],
-  [gPortfolioPath+'sendAlertMsgSystem/connectionUI.jpg', '異常警報訊息發送系統']
+  [gPortfolioPath+'monkeyGame/img_1.jpg', '阿緱手遊之稅務謎城'],
+  [gPortfolioPath+'doubleTenGame/img_1.jpg', '雙十連假親子體驗營隊之網頁問答遊戲'],
+  [gPortfolioPath+'taxConceptGame/img_1.jpg', '稅務觀念宣導遊戲'],
+  [gPortfolioPath+'openEyes/img_1.jpg', '睜大你的眼'],
+  [gPortfolioPath+'sportManager/img_1.jpg', '運動管理員'],
+  [gPortfolioPath+'sendAlertMsgSystem/img_1.jpg', '異常警報訊息發送系統']
+];
+const gPortfolioPic = [
+  ['monkeyGame', 'img_', 13],
+  ['doubleTenGame', 'img_', 5],
+  ['taxConceptGame', 'img_', 7],
+  ['openEyes', 'img_', 3],
+  ['sportManager', 'img_', 9],
+  ['sendAlertMsgSystem', 'img_', 5]
 ];
 
 function getAboutHtml() {
@@ -270,6 +278,13 @@ function getPortfolioHtml() {
 }
 
 function portfolioClickEvent(index) {
-  var name = gPortfolioMenu[index][1];
-  //alert(name);
+  var tag = gPortfolioPic[index][0];
+  var ecTag = btoa(tag); // encode by Base 64
+if(false)
+  location.href = 'portfolio.html?portfolioTag=' + ecTag;
+}
+
+function getUrlPara(url, goal) {
+  var objUrl = new URL(url);
+  return objUrl.searchParams.get(goal);
 }
