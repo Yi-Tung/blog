@@ -149,27 +149,32 @@ const gAboutMenu = [
   ['丙級電腦軟體應用技術士', '']
 ];
 
-const gExpMenu = [
-  ['工作經歷', 'length:1'],
-  ['惠通科技股份有限公司 軟體工程師', '2022/01 ~ 2022/08'],
 
-  ['求學經歷', 'length:9'],
-  ['物聯網開發實作工作坊', '2021/06'],
-  ['第十八屆數位生活科技研討會', '2018/06'],
-  ['第二屆屏大創意黑客松競賽', '2018/06'],
-  ['屏大資訊學院實務專題成果競賽', '2018/02'],
-  ['APP校內成果發表會', '2017/10'],
-  ['行動多媒體成果發表會', '2017/10'],
-  ['創意APP競賽', '2017/10'],
-  ['校外實習', '2017/06 ~ 2017/08'],
-  ['第一屆屏大創意黑客松競賽', '2017/05'],
+const gExpMenu = [  // [item name, period, hyperlink switch]
+  ['工作經歷', 'length:1', false],
+  ['惠通科技股份有限公司 軟體工程師', '2022/01 ~ 2022/08', true],
 
-  ['實務經歷', 'length:5'],
-  ['全國高中職專題競賽網站建置', '2020/10 ~ 2020/12'],
-  ['雙十連假親子體驗營隊之網頁問答遊戲', '2020/08 ~ 2020/09'],
-  ['稅務觀念宣導遊戲網頁版開發', '2019/05 ~ 2019/11'],
-  ['稅務知識小尖兵比賽活動之體驗遊戲', '2019/09 ~ 2018/11'],
-  ['阿緱手遊之稅務謎城遊戲建置', '2018/04 ~ 2018/12']
+  ['求學經歷', 'length:9', false],
+  ['物聯網開發實作工作坊', '2021/06', false],
+  ['第十八屆數位生活科技研討會', '2018/06', false],
+  ['第二屆屏大創意黑客松競賽', '2018/06', false],
+  ['屏大資訊學院實務專題成果競賽', '2018/02', false],
+  ['APP校內成果發表會', '2017/10', false],
+  ['行動多媒體成果發表會', '2017/10', false],
+  ['創意APP競賽', '2017/10', false],
+  ['育華興業股份有限公司 實習生', '2017/06 ~ 2017/08', true],
+  ['第一屆屏大創意黑客松競賽', '2017/05', false],
+
+  ['實務經歷', 'length:5', false],
+  ['全國高中職專題競賽網站建置', '2020/10 ~ 2020/12', false],
+  ['雙十連假親子體驗營隊之網頁問答遊戲', '2020/08 ~ 2020/09', false],
+  ['稅務觀念宣導遊戲網頁版開發', '2019/05 ~ 2019/11', false],
+  ['稅務知識小尖兵比賽活動之體驗遊戲', '2019/09 ~ 2018/11', false],
+  ['阿緱手遊之稅務謎城遊戲建置', '2018/04 ~ 2018/12', false]
+];
+const gExpLink = [ // [hyperlink string, target]
+  ['惠通科技股份有限公司', 'https://www.korenix.com/en/about/index.aspx?kind=3'],
+  ['育華興業股份有限公司', 'http://www.yiuhwa.com.tw/page/about/index.aspx?kind=3&lang=TW']
 ];
 
 const gPortfolioPath = '../src/portfolio/';
@@ -229,7 +234,7 @@ function getAboutHtml() {
 
 function getExpHtml() {
   var str = '';
-  for(var i=0;i<gExpMenu.length;i++) {
+  for(var i=0, j=0;i<gExpMenu.length;i++) {
     var buf = gExpMenu[i];
     if(buf[1].indexOf('length') !== -1) {
       str += `<section>
@@ -237,8 +242,19 @@ function getExpHtml() {
                 <div class="customed-list-group-pannel">  
                   <ul class="list-group">`;
       for(i=i+1;gExpMenu[i]!==undefined &&  gExpMenu[i][1].indexOf('length')===-1;i++) {
+        var itemHtml = gExpMenu[i][0];
+
+        if(gExpMenu[i][2]) {
+	  var linkInfo = gExpLink[j++];
+	  var itemName = gExpMenu[i][0].replace(linkInfo[0], '');
+	  itemHtml = `<a href="` + linkInfo[1]  +  `" class="cus-link">`
+	           +    linkInfo[0]
+		   + `</a>`
+		   + itemName;
+	}
+
         str += `    <li class="list-group-item customed-list-group-item">`
-             +        gExpMenu[i][0] 
+             +        itemHtml
              + `      <span class="badge float-right">` 
              +          gExpMenu[i][1] 
              + `      </span>
