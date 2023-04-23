@@ -4,9 +4,11 @@ const DEFAULT_TITLE = 'Tung\'s blog';
 const DEFAULT_ICON_FILENAME = 'logo.png';
 const DEFAULT_IMG_PATH = '../src/img/';
 
+
 function getCopyrightHtml() {
   return DEFAULT_COPYRIGHT;
 }
+
 
 function common() {
   setMeta();
@@ -14,10 +16,12 @@ function common() {
   setWebsiteTitle(DEFAULT_TITLE);
 }
 
+
 function setMeta() {
   setAuthor(DEFAULT_AUTHOR);
   setCopyright(DEFAULT_COPYRIGHT);
 }
+
 
 function setAuthor(cus_author) {
   var link = document.createElement('meta');
@@ -26,12 +30,14 @@ function setAuthor(cus_author) {
   document.getElementsByTagName('head')[0].appendChild(link);
 }
 
+
 function setCopyright(cus_copyright) {
   var link = document.createElement('meta');
   link.name = 'copyright';
   link.content = cus_copyright;
   document.getElementsByTagName('head')[0].appendChild(link);
 }
+
 
 function setWebsiteFavicon(cus_path, cus_icon_filename) {
   var link = document.createElement('link');
@@ -40,6 +46,7 @@ function setWebsiteFavicon(cus_path, cus_icon_filename) {
   link.href = cus_path + cus_icon_filename;
   document.getElementsByTagName('head')[0].appendChild(link);
 }
+
 
 function setWebsiteTitle(cus_title) {
   var link = document.createElement('title');
@@ -81,6 +88,7 @@ function getNavbarHtml() {
    return str;
 }
 
+
 function navItemClickEvent(type) {
   switch(type) {
     case 'profile':
@@ -101,6 +109,7 @@ function navItemClickEvent(type) {
       break;
   }
 }
+
 
 function setActiveNavbarItem(tag) {
   if(gActiveNavbarItem!==undefined) {
@@ -126,27 +135,25 @@ function setActiveBtnGroupBtn(id) {
 
 /**for profile.html***********************************************************************/
 
-const gAboutMe = [
-  '關於我', 
-  '我的爸爸跟媽媽，自我年幼之時，便開了間早餐店，我跟哥哥在閒暇之餘會一起去店裡幫忙，雖然我們都是幫忙一些相對簡單的事務，不過卻見識各種待人處事的方式，也同時培養出我察言觀色的習慣，而在平常的生活中，他們也經常利用身邊的大小事情對我進行機會教育，也因此培養出我對各事物的聯想力。我的哥哥，目前是一位職業軍人，雖然在同個家庭出生也共同成長，我們的選擇卻截然不同，不過也因此讓我學會尊重每個人的選擇及想法，小時候的我們感情十分要好，即便有時會產生摩擦，但我仍然喜歡跟在他身邊，因為喜歡，所以不輕易放棄。我的家庭，總是會支持我去做我認為對的事情，所以當遇到困難時，我便會想盡辦法來解決，不希望辜負支持著我的人，即便遇到挫敗，我仍會再次振作。'
-];
-
-const gAboutMe_title = [
-  '(家庭背景)',
-  '(求學經歷)'
-];
-
 const gAboutMenu = [
+  ['姓名', 'length:1'],
+  ['Tung', ''],
+
   ['學歷', 'length:3'],
-  ['國立屏東大學 資訊工程碩士', '2020/07'],
-  ['國立屏東大學 資訊工程學士', '2018/06'],
-  ['私立中山高級工商職業學校', '2014/06'],
+  ['國立屏東大學 資訊工程系碩士', '2018/09 ~ 2020/07'],
+  ['國立屏東大學 資訊工程系學士', '2014/09 ~ 2018/06'],
+  ['私立中山高級工商職業學校', '2011/09 ~ 2014/06'],
   
   ['證照', 'length:4'],
-  ['TQC+ 程式語言', ''],
-  ['TQC+ 物件導向程式語言', ''],
+  ['TQC+ 程式語言（C/Python）', ''],
+  ['TQC+ 物件導向程式語言（Java）', ''],
   ['丙級工業電子技術士', ''],
-  ['丙級電腦軟體應用技術士', '']
+  ['丙級電腦軟體應用技術士', ''],
+
+  ['得獎', 'length:3'],
+  ['第十八屆數位生活研討會《最佳論文獎》', '2018/06'],
+  ['屏大資訊學院實務專題成果競賽－智慧電子創新設計組《佳作》', '2018/02'],
+  ['第一屆屏大創意黑客松競賽《佳作》', '2017/05'],
 ];
 
 
@@ -177,6 +184,13 @@ const gExpLink = [ // [hyperlink string, target]
   ['育華興業股份有限公司', 'http://www.yiuhwa.com.tw/page/about/index.aspx?kind=3&lang=TW']
 ];
 
+
+const gAutobiography = [
+  '家庭背景:1',
+  '我的爸爸跟媽媽，自我年幼之時，便開了間早餐店，我跟哥哥在閒暇之餘會一起去店裡幫忙，雖然我們都是幫忙一些相對簡單的事務，不過卻見識各種待人處事的方式，也同時培養出我察言觀色的習慣，而在平常的生活中，他們也經常利用身邊的大小事情對我進行機會教育，也因此培養出我對各事物的聯想力。我的哥哥，目前是一位職業軍人，雖然在同個家庭出生也共同成長，我們的選擇卻截然不同，不過也因此讓我學會尊重每個人的選擇及想法，小時候的我們感情十分要好，即便有時會產生摩擦，但我仍然喜歡跟在他身邊，因為喜歡，所以不輕易放棄。我的家庭，總是會支持我去做我認為對的事情，所以當遇到困難時，我便會想盡辦法來解決，不希望辜負支持著我的人，即便遇到挫敗，我仍會再次振作。'
+];
+
+
 const gPortfolioPath = '../src/portfolio/';
 const gPortfolioMenu = [
   [gPortfolioPath+'monkeyGame/img_1.jpg', '阿緱手遊之稅務謎城'],
@@ -195,42 +209,33 @@ const gPortfolioPic = [
   ['sendAlertMsgSystem', 'img_', 5]
 ];
 
-function getAboutHtml() {
-  var str = `<section>
-               <h2>` + gAboutMe[0] + `</h2>`
-	  +   `<span class="padding-4">`
-	  +     gAboutMe_title[0]
-	  +   `</span>`
-          +   `<article class="padding-4">`
-	  +      `<p>`
-          +        gAboutMe[1]
-	  +      `</p>`
-          + `  </article>`
-          + `</section>`;
 
-   for(var i=0;i<gAboutMenu.length;i++) {
-     var buf = gAboutMenu[i];
-     if(buf[1].indexOf('length') !== -1) {
-       str += `<section>
-                 <h2>` + buf[0] + `</h2>
-                 <div class="customed-list-group-pannel">
-                   <ul class="list-group">`;
+function getAboutHtml() {
+  var str = '';
+  for(var i=0;i<gAboutMenu.length;i++) {
+    var buf = gAboutMenu[i];
+    if(buf[1].indexOf('length') !== -1) {
+      str += `<section>
+                <h2>` + buf[0] + `</h2>
+                <div class="customed-list-group-pannel">
+                  <ul class="list-group">`;
        for(i=i+1;gAboutMenu[i]!==undefined && gAboutMenu[i][1].indexOf('length')===-1;i++) {
-         str += `    <li class="list-group-item customed-list-group-item">`
-              +        gAboutMenu[i][0]
-              + `      <span class="badge float-right">`
-              +          gAboutMenu[i][1]
-              + `      </span>`
-              + `    </li>`;
+         str += `   <li class="list-group-item customed-list-group-item">`
+              +       gAboutMenu[i][0]
+              + `     <span class="badge float-right">`
+              +         gAboutMenu[i][1]
+              + `     </span>`
+              + `   </li>`;
        }
-       str += `    </ul>
-                 </div>
-               </section>`;
+       str += `   </ul>
+                </div>
+              </section>`;
        i--;
-     }
+    }
   }
   return str;
 }
+
 
 function getExpHtml() {
   var str = '';
@@ -269,6 +274,29 @@ function getExpHtml() {
   return str;
 }
 
+
+function getAutobiographyHtml() {
+  var str = '';
+  for(i=0;gAutobiography[i]!=null;i++) {
+    var tmp = gAutobiography[i].split(':');
+    var title = tmp[0];
+    var len = parseInt(tmp[1]);
+    str += `<section>
+              <h2>` + title + `</h2>`;
+    for(j=i+1;j<=i+len;j++) {
+      str += `<article class="padding-4">
+                <p>`
+           +      gAutobiography[j]
+	   + `  </p>
+	      </article>`;
+    }
+    str += `</section>`;
+    i += len;
+  }
+  return str;
+}
+
+
 function getPortfolioHtml() {
   const COL_MAX_NUM = 3;
   var str = `<section><h2>作品展示區</h2>`;
@@ -293,12 +321,14 @@ function getPortfolioHtml() {
   return str;
 }
 
+
 function portfolioClickEvent(index) {
   var tag = gPortfolioPic[index][0];
   var ecTag = btoa(tag); // encode by Base 64
 if(false)
   location.href = 'portfolio.html?portfolioTag=' + ecTag;
 }
+
 
 function getUrlPara(url, goal) {
   var objUrl = new URL(url);

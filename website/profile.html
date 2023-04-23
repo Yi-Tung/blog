@@ -52,6 +52,7 @@
             mTabBtnInfo: [
               ['aboutTabBtn', '簡介'], 
               ['expTabBtn', '經歷'],
+              ['autobiographyTabBtn', '自傳'],
               ['portfolioTabBtn', '作品展示']
             ]
           }
@@ -73,6 +74,9 @@
                 this.mContentHtml = getExpHtml();
                 break;
               case this.mTabBtnInfo[2][0]:
+	        this.mContentHtml = getAutobiographyHtml();
+	        break;
+              case this.mTabBtnInfo[3][0]:
                 this.mContentHtml = getPortfolioHtml();
                 break;
               default:
